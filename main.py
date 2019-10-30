@@ -55,7 +55,7 @@ class ClickKeyEventListener(pykeyboard.PyKeyboardEvent):
             return event
 
         if self.enable:
-            if key == 0x32:  # `
+            if key == 0x32:# or key == 0x2b:  # ` ,
                 Quartz.CGEventSetFlags(event, flags ^ Quartz.kCGEventFlagMaskSecondaryFn)
                 pos = self.mouse.position()
                 if type == Quartz.kCGEventKeyDown:
@@ -94,7 +94,10 @@ class MouseEventListener(pymouse.PyMouseEvent):
             # print 'move mouse'
             if listener.mouse_down:
                 # print 'trans drag'
-                Quartz.CGEventSetType(event, Quartz.kCGEventLeftMouseDragged)
+                Quartz.CGEventSetType(event, Quartz.kCGEventNull)
+                (x, y) = Quartz.CGEventGetLocation(event)
+                listener.mouse.drag(x, y)
+                # Quartz.CGEventSetType(event, Quartz.kCGEventLeftMouseDragged)
             else:
                 pass
         return event
