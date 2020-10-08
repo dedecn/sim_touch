@@ -90,6 +90,10 @@ class MouseEventListener(pymouse.PyMouseEvent):
         if type == Quartz.kCGEventLeftMouseDragged:
             # print 'drag mouse'
             pass
+            # Quartz.CGEventSetType(event, Quartz.kCGEventNull)
+            # (x, y) = Quartz.CGEventGetLocation(event)
+            # listener.mouse.drag(x, y)
+
         elif type == Quartz.kCGEventMouseMoved:
             # print 'move mouse'
             if listener.mouse_down:
@@ -97,7 +101,7 @@ class MouseEventListener(pymouse.PyMouseEvent):
                 Quartz.CGEventSetType(event, Quartz.kCGEventNull)
                 (x, y) = Quartz.CGEventGetLocation(event)
                 listener.mouse.drag(x, y)
-                # Quartz.CGEventSetType(event, Quartz.kCGEventLeftMouseDragged)
+                #Quartz.CGEventSetType(event, Quartz.kCGEventLeftMouseDragged)
             else:
                 pass
         return event
