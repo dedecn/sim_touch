@@ -55,7 +55,7 @@ class ClickKeyEventListener(pykeyboard.PyKeyboardEvent):
             return event
 
         if self.enable:
-            if key == 0x32:# or key == 0x2b:  # ` ,
+            if key == 0x41:# keypad .   keycode can be found in app 'Key Codes'
                 Quartz.CGEventSetFlags(event, flags ^ Quartz.kCGEventFlagMaskSecondaryFn)
                 pos = self.mouse.position()
                 if type == Quartz.kCGEventKeyDown:
